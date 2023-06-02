@@ -23,9 +23,7 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.7.8",
     "nodemon": "^2.0.19",
-    "randomstring": "^1.2.2",
-    "os":"darwin,linux,win32,win64",
-    "arch":"any"
+    "randomstring": "^1.2.2"
   }
   
 }
