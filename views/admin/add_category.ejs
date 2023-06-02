@@ -1,0 +1,24 @@
+<%-include('./common/head.ejs')%>
+    <div class="wrapper d-flex align-items-stretch">
+        <%-include('./common/sidebar.ejs')%>
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+                <h2 class="mb-4">Category | Blog | Add</h2>
+                <div class="card">
+                    <div class="card-header">Register</div>
+                    <div class="card-body">
+                        <form method='post' action="">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="text" name="name" class="form-control"/>
+                              
+                            </div>
+                           
+                            <button type="submit" class="btn btn-primary">Add Category</button>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+    </div>
+    <%-include('./common/footer.ejs')%>

@@ -1,0 +1,58 @@
+<%-include('common/head.ejs')%>
+    <div class="wrapper d-flex align-items-stretch">
+        <%-include('common/sidebar.ejs')%>
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+                <h2 class="mb-4">Blog | Post</h2>
+                <% if (message.length>0) {%> 
+                    <div class="alert alert-success">
+                      <%= message %>
+                    </div>  
+                    <% } %>  
+                <div class="row">
+                   
+                    <div class="col col-md-12">
+                        <a href="/admin/blog/add" class="btn btn-success">Add Blog</a>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Blog Title</th>
+                                    <th scope="col">Cat-name</th>
+                                    <th scope="col">Blog</th>
+                                    <th scope="col">image</th>
+                                    <th scope="col">Status</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%  let count = 0;
+                                if(displaydata.length>0) {%>
+                                    <tbody>
+                                      <% for(let blog of displaydata){ %>
+                                      <tr>
+                                        <td><%= ++count %></td>
+                                        <td><%= blog.title %></td>
+                                        <td><%= blog.category %></td>
+                                        <td><%- blog.postText %></td>
+                                        <td><img src="/uploads/<%= blog.image %>" width="100px" height="70px"></td>
+                                        <td>Active</td>
+                                        
+                                        <td><a href="" class="btn btn-success">Edit</a></td>
+                                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                                      </tr>
+                                    </tbody>
+                                    <%}}else{%>
+                                    <h3 style="color: red;">No blog data found!!</h3>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <%-include('common/footer.ejs')%>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('post');
+    </script>

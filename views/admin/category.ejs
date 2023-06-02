@@ -1,0 +1,62 @@
+<%-include('common/head.ejs')%>
+    <div class="wrapper d-flex align-items-stretch">
+        <%-include('common/sidebar.ejs')%>
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+                <h2 class="mb-4">Category | Blog</h2>
+                <% if (message.length>0) {%> 
+                    <div class="alert alert-success">
+                      <%= message %>
+                    </div>  
+                    <% } %>  
+                <div class="row">
+                    <div class="col col-md-6">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Status</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(displaydata.length>0) {%>
+                                    <tbody>
+                                      <% for(let category of displaydata){ %>
+                                      <tr>
+                                        <td>#</td>
+                                        <td><%= category.category %></td>
+                                        <td><a href="" class="btn btn-success">Edit</a></td>
+                                        <td><a href="" class="btn btn-danger">Delete</a></td>
+                                      </tr>
+                                    </tbody>
+                                    <%}}else{%>
+                                    <h1>No data found</h1>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="card">
+                            <% if (error.length>0) {%> 
+                                <div class="alert alert-danger">
+                                  <%= error %>
+                                </div>  
+                                <% } %>  
+                            <div class="card-header">Add Category</div>
+                            <div class="card-body">
+                                <form method='post' action="/admin/category/post">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Category</label>
+                                        <input type="text" name="category" class="form-control" />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Category</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <%-include('common/footer.ejs')%>

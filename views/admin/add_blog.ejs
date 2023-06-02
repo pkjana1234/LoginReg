@@ -1,0 +1,53 @@
+<%-include('common/head.ejs')%>
+    <div class="wrapper d-flex align-items-stretch">
+        <%-include('common/sidebar.ejs')%>
+            <!-- Page Content  -->
+            <div id="content" class="p-4 p-md-5 pt-5">
+                <h2 class="mb-4">Blog | Post</h2>
+                <div class="row">                   
+                    <div class="col col-md-12">
+                        <% if (error.length>0) {%> 
+                            <div class="alert alert-danger">
+                              <%= error %>
+                            </div>  
+                            <% } %> 
+                        <div class="card">
+                            <div class="card-header">Add Blog</div>
+                             
+                            <div class="card-body">
+                                <form method='post' action="/admin/blog/create" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Blog Title</label>
+                                        <input type="text" name="title" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Select Category</label>
+                                        <select class="form-control" name="category">
+                                            <option aria-disabled="">Selete category</option>
+                                            <% for(let cat of displaydata){ %>
+                                          <option value="<%= cat._id %>"><%= cat.category %></option>
+                                          <% } %>
+                                          
+                                        </select>
+                                      </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Enter Blog Post</label><br>
+                                        <textarea name="post"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Post image:</label><br>
+                                        <input type="file" class="form-control" name="image">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Blog</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <%-include('common/footer.ejs')%>
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('post');
+    </script>
